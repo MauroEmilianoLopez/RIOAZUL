@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
     res.setHeader("Cache-Control", "public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000");
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.status(200).send(image);
-  } catch {
-    res.status(502).send("Error al cargar la imagen");
+  } catch (error) {
+    res.status(502).send(String(error && error.message ? error.message : error));
   }
 };
