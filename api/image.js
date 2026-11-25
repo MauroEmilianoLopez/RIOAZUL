@@ -22,12 +22,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const upstream = await fetch("https://www.cabanasrioazul.com.ar" + imagePath, {
-      headers: {
-        "Referer": "https://www.cabanasrioazul.com.ar/",
-        "User-Agent": "Mozilla/5.0 (compatible; RioAzulImageProxy/1.0)"
-      }
-    });
+    const upstream = await fetch("https://www.cabanasrioazul.com.ar" + imagePath);
 
     if (!upstream.ok) {
       res.status(upstream.status).send("No se pudo obtener la imagen");
